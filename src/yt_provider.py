@@ -1,3 +1,5 @@
+from typing import Any
+
 from pytube import YouTube, StreamQuery
 
 
@@ -23,8 +25,8 @@ class YtProvider:
     def download_by_itag(stream_query: StreamQuery, itag: int, output_path: str = ""):
         try:
             stream_query.get_by_itag(itag).download(output_path=output_path)
-        except:
-            print("Download failed")
+        except Any as err:
+            print(f"Download failed: {err}")
             return False
 
         return True

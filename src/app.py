@@ -1,3 +1,5 @@
+from typing import Any
+
 from pytube import YouTube, StreamQuery, Stream
 from pytube.exceptions import RegexMatchError, VideoUnavailable
 
@@ -44,8 +46,8 @@ class App:
                         progress_handler=self.on_progress_handler,
                         complete_handler=self.on_complete_handler,
                     )
-                except:
-                    print("Unexpected error!")
+                except Any as err:
+                    print(f"Unexpected error: {err}")
                     continue
 
                 print(f"Title: {yt.title}")
